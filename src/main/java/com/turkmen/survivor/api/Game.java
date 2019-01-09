@@ -1,15 +1,14 @@
 package com.turkmen.survivor.api;
 
-import java.util.List;
-
 public interface Game {
 
+    Player getPlayer();
+    void setPlayer(Player player);
 
+    Planet getPlanet();
 
+    void setPlanet(Planet planet);
 
-    List<Character> getCharacters();
-
-    void setCharacters(List<Character> characters);
 
     int getId();
 

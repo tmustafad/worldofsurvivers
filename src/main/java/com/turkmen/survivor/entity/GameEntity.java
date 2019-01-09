@@ -1,14 +1,23 @@
 package com.turkmen.survivor.entity;
 
 import com.turkmen.survivor.api.Character;
-import com.turkmen.survivor.api.CharacterType;
-import com.turkmen.survivor.api.Game;
-
-import java.util.List;
+import com.turkmen.survivor.api.*;
 
 public class GameEntity implements Game {
 
-    private List<Character> characters;
+    private Planet planet;
+    private int id;
+    private Player player;
+
+    @Override
+    public Player getPlayer() {
+        return this.player;
+    }
+
+    @Override
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
 
     @Override
     public Character findAndAttack(CharacterType characterType) {
@@ -30,7 +39,15 @@ public class GameEntity implements Game {
 
     }
 
-    private int id;
+    @Override
+    public Planet getPlanet() {
+        return this.planet;
+    }
+
+    @Override
+    public void setPlanet(Planet planet) {
+        this.planet = planet;
+    }
 
     public int getId() {
         return this.id;
@@ -40,11 +57,5 @@ public class GameEntity implements Game {
         this.id = id;
     }
 
-    public List<Character> getCharacters() {
-        return this.characters;
-    }
 
-    public void setCharacters(List<Character> characters) {
-        this.characters = characters;
-    }
 }
