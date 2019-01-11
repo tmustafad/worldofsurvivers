@@ -30,8 +30,8 @@ public class GameEntity implements Game {
     }
 
     @Override
-    public void resume() {
-
+    public Game resume() {
+    return this;
     }
 
     @Override

@@ -1,6 +1,8 @@
 package com.turkmen.survivor.api;
 
 public interface Character {
+    int getId();
+    void setId(int id);
 
     int getLocationx();
     void setLocationx(int locationx);

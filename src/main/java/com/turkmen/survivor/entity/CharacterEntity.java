@@ -5,6 +5,8 @@ import com.turkmen.survivor.api.CharacterType;
 
 public class CharacterEntity implements Character {
 
+    private int id;
+
     private String name;
 
     private int health;
@@ -15,6 +17,16 @@ public class CharacterEntity implements Character {
     private int planetId;
     private int locationx;
     private int locationy;
+
+    @Override
+    public int getId() {
+        return this.id;
+    }
+
+    @Override
+    public void setId(int id) {
+        this.id = id;
+    }
 
     @Override
     public int getLocationx() {

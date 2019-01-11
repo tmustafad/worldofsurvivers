@@ -4,9 +4,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Optional;
 import java.util.Properties;
+import java.util.Random;
 
-public class Utils {
+public final class Utils {
 
+    private Utils() {
+        throw new UnsupportedOperationException();
+    }
 
     public static Optional<String> getPropertyValue(String value) {
         Properties prop = new Properties();
@@ -28,5 +32,11 @@ public class Utils {
                 }
             }
         }
+    }
+
+
+    public static int generateRandomInt() {
+        Random random = new Random();
+        return random.nextInt(Integer.valueOf(getPropertyValue("id.range.max").get()).intValue());
     }
 }

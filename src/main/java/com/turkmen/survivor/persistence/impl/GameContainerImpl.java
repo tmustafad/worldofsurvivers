@@ -18,7 +18,7 @@ public class GameContainerImpl implements Container<Game> {
     }
 
     private GameContainerImpl() {
-        System.out.println("Game storage initiated........");
+        System.out.println("Game container initiated........");
     }
 
     public static GameContainerImpl getGameContainerImpl() {

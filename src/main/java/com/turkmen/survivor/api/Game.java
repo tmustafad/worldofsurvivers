@@ -16,7 +16,7 @@ public interface Game {
 
     void start();
 
-    void resume();
+    Game resume();
 
     void pause();
 
