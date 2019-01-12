@@ -47,8 +47,8 @@ public class Setup {
     }
 
     private Planet createPlanet() {
-         planetUI.create(planetName);
-         return createPlanetMatrix();
+        planetUI.create(planetName);
+        return createPlanetMatrix();
     }
 
     private Planet createPlanetMatrix() {
@@ -83,14 +83,14 @@ public class Setup {
         matrix[0] = human;
         Collections.shuffle(Arrays.asList(matrix));
         IntStream.range(0, matrixSize).filter(e -> matrix[e] != null).forEach(i -> matrix[i].setLocation(i));
-        IntStream.range(0,matrixSize).filter(f->matrix[f]!= null ).forEach(j->characterUI.update(matrix[j]));
+        IntStream.range(0, matrixSize).filter(f -> matrix[f] != null).forEach(j -> characterUI.update(matrix[j]));
         planetUI.getPlanetByName(planetName).setMatrix(matrix);
-        List<Character> characters=characterUI.getAllCharacters();
+        List<Character> characters = characterUI.getAllCharacters();
         return planetUI.update(planetUI.getPlanetByName(planetName));
     }
 
     private Player createPlayer(String name) {
-        Player player=playerUI.create(name);
+        Player player = playerUI.create(name);
         return playerUI.update(player);
     }
 
@@ -104,43 +104,4 @@ public class Setup {
     }
 
 
-    public int getMatrixSize() {
-        return matrixSize;
-    }
-
-    public String getPlanetName() {
-        return planetName;
-    }
-
-    public PlanetUI getPlanetUI() {
-        return planetUI;
-    }
-
-    public CharacterUI getCharacterUI() {
-        return characterUI;
-    }
-
-    public int getDinosaurCount() {
-        return dinosaurCount;
-    }
-
-    public int getSheepCount() {
-        return sheepCount;
-    }
-
-    public int getCowCount() {
-        return cowCount;
-    }
-
-    public int getChickenCount() {
-        return chickenCount;
-    }
-
-    public int getAlienCount() {
-        return alienCount;
-    }
-
-    public int getGhostCount() {
-        return ghostCount;
-    }
 }

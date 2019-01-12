@@ -20,7 +20,8 @@ public class StartGame {
         GameState gameState=GenericBuilder.of(GameState::new).build();
 
         while (true) {
-            System.out.println("****** WELCOME TO WORLD OF SURVIVERS ******");
+            System.out.println("****** WELCOME TO THE WORLD OF SURVIVERS ******");
+            System.out.println("AS A HUMAN,ARE YOU STRONG ENOUGH TO SURVIVE IN A WORLD OF MONSTERS?");
             Game game=setup.createGame("turkmen");
             System.out.println(gameState.getGameState(game.getId()).toString());
         }
