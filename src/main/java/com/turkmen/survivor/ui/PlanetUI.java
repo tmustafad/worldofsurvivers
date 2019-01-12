@@ -26,6 +26,10 @@ public class PlanetUI {
         return dto;
     }
 
+    public Planet update(Planet planet){
+        return planetService.update(planet);
+    }
+
     public List<Planet> getAllPlanets() {
         return PlanetMapper.makePlanetDtoList(planetService.getAll());
     }

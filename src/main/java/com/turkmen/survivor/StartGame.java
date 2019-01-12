@@ -1,6 +1,8 @@
 package com.turkmen.survivor;
 
+import com.turkmen.survivor.api.model.Game;
 import com.turkmen.survivor.builder.GenericBuilder;
+import com.turkmen.survivor.config.GameState;
 import com.turkmen.survivor.config.Setup;
 import com.turkmen.survivor.persistence.impl.PlayerContainerImpl;
 import com.turkmen.survivor.ui.PlayerUI;
@@ -15,11 +17,12 @@ public class StartGame {
         String command;
         Scanner sc = new Scanner(System.in);
         Setup setup =GenericBuilder.of(Setup::new).build();
+        GameState gameState=GenericBuilder.of(GameState::new).build();
 
         while (true) {
             System.out.println("****** WELCOME TO WORLD OF SURVIVERS ******");
-            System.out.println("type \"regiester\" in order to create a player with a given name......");
-            setup.createGame("turkmen");
+            Game game=setup.createGame("turkmen");
+            System.out.println(gameState.getGameState(game.getId()).toString());
         }
 
     }

@@ -6,6 +6,6 @@ public interface Container<T> {
 
     Map<Integer, T> get();
 
-    void add(T t);
+    T add(T t);
 
 }

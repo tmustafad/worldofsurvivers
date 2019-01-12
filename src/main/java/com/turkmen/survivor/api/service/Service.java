@@ -8,4 +8,5 @@ public interface Service<T> {
     T create(T t) throws ServiceException;
     List<T> getAll() throws ServiceException;
     T get(String name);
+    T update(T t);
 }

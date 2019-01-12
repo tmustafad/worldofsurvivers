@@ -45,4 +45,9 @@ public class GameServiceImpl implements GameService {
         return gameContainer.getGames().values()
                 .stream().collect(Collectors.toList());
     }
+
+    @Override
+    public Game update(Game game) {
+        return gameContainer.getGames().put(game.getId(),game);
+    }
 }

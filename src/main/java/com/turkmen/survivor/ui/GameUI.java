@@ -26,6 +26,9 @@ public class GameUI {
         return dto;
     }
 
+    public Game update(Game game){
+        return gameService.update(game);
+    }
     public List<Game> getAllGames() {
         return GameMapper.makeGameDtoList(gameService.getAll());
     }

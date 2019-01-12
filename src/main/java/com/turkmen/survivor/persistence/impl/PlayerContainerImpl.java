@@ -34,8 +34,8 @@ public class PlayerContainerImpl implements Container<Player> {
     }
 
     @Override
-    public void add(Player player) {
-        players.put(player.getId(), player);
+    public Player add(Player player) {
+        return players.put(player.getId(), player);
     }
 
     public Map<Integer, Player> getPlayers() {

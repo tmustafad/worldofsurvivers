@@ -28,4 +28,9 @@ public class PlayerServiceImpl implements PlayerService {
         return playerContainerImpl.getPlayers().values()
                 .stream().filter(p->p.getName().equalsIgnoreCase(name)).findFirst().get();
     }
+
+    @Override
+    public Player update(Player player) {
+        return playerContainerImpl.add(player);
+    }
 }

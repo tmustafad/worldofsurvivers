@@ -32,8 +32,8 @@ public class CharacterContainerImpl implements Container<Character> {
     }
 
     @Override
-    public void add(Character character) {
-        this.characters.put(character.getId(), character);
+    public Character add(Character character) {
+        return this.characters.put(character.getId(), character);
     }
 
     public Map<Integer, Character> getCharacters() {

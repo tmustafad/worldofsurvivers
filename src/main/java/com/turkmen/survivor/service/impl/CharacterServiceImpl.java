@@ -36,4 +36,9 @@ public class CharacterServiceImpl implements CharacterService {
     public Character get(String name) {
         return null;
     }
+
+    @Override
+    public Character update(Character character) {
+        return characterContainerImpl.getCharacters().put(character.getId(),character);
+    }
 }

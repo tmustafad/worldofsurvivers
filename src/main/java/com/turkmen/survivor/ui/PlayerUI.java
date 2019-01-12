@@ -30,6 +30,9 @@ public class PlayerUI {
         return dto;
     }
 
+    public Player update(Player player){
+        return playerService.update(player);
+    }
 
     public List<Player> getAllPlayers() {
         return PlayerMapper.makePlayerDtoList(playerService.getAll());

@@ -36,8 +36,8 @@ public class CharacterEntity implements Character {
     }
 
     @Override
-    public void setLocation(int locationx) {
-        this.location = locationx;
+    public void setLocation(int location) {
+        this.location = location;
     }
 
 
@@ -77,7 +77,7 @@ public class CharacterEntity implements Character {
 
 
     public CharacterType getType() {
-        return null;
+        return this.type;
     }
 
     public void setType(CharacterType type) {

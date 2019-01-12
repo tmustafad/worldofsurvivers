@@ -32,8 +32,8 @@ public class GameContainerImpl implements Container<Game> {
         return this.games;
     }
 
-    public void add(Game game) {
-        this.games.put(game.getId(),game);
+    public Game add(Game game) {
+        return this.games.put(game.getId(),game);
     }
 
 

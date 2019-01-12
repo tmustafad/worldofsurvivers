@@ -33,6 +33,9 @@ public class CharacterUI {
 
     }
 
+    public Character update(Character character){
+        return characterService.update(character);
+    }
 
     public List<Character> getAllCharacters() {
         return CharacterMapper.makeCharacterDtoList(characterService.getAll());

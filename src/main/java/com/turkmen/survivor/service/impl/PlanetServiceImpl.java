@@ -29,4 +29,9 @@ public class PlanetServiceImpl implements PlanetService {
         return planetContainerImpl.getPlanets().values()
                 .stream().filter(p->p.getName().equalsIgnoreCase(name)).findFirst().get();
     }
+
+    @Override
+    public Planet update(Planet planet) {
+        return planetContainerImpl.getPlanets().put(planet.getId(),planet);
+    }
 }
