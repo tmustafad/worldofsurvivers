@@ -1,14 +1,14 @@
 package com.turkmen.survivor.persistence.impl;
 
-import com.turkmen.survivor.api.Planet;
-import com.turkmen.survivor.persistence.Container;
+import com.turkmen.survivor.api.model.Planet;
+import com.turkmen.survivor.api.persistence.Container;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class PlanetContainerImpl implements Container<Planet> {
 
-    private static PlanetContainerImpl planetContainerImpl = null;
+    private static PlanetContainerImpl planetContainerImpl;
 
     Map<Integer, Planet> planets;
 
@@ -20,9 +20,9 @@ public class PlanetContainerImpl implements Container<Planet> {
         System.out.println("Planet Container initialized.........");
     }
 
-    public static PlanetContainerImpl getPlanetContainerImpl() {
+    public static PlanetContainerImpl getInstance() {
         if (planetContainerImpl == null) {
-            return new PlanetContainerImpl();
+            planetContainerImpl = new PlanetContainerImpl();
         }
         return planetContainerImpl;
     }
@@ -35,5 +35,9 @@ public class PlanetContainerImpl implements Container<Planet> {
     @Override
     public void add(Planet planet) {
         this.planets.put(planet.getId(), planet);
+    }
+
+    public Map<Integer, Planet> getPlanets() {
+        return planets;
     }
 }

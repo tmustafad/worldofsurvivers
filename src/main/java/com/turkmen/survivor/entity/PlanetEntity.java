@@ -1,15 +1,14 @@
 package com.turkmen.survivor.entity;
 
-import com.turkmen.survivor.api.Character;
-import com.turkmen.survivor.api.Planet;
+import com.turkmen.survivor.api.model.Character;
+import com.turkmen.survivor.api.model.Planet;
 
 import java.util.List;
 
 public class PlanetEntity implements Planet {
 
     private int id;
-    private List<Character> characters;
-    private Character[][] matrix;
+    private Character[] matrix;
     private String name;
 
     @Override
@@ -22,23 +21,14 @@ public class PlanetEntity implements Planet {
         this.id = id;
     }
 
-    @Override
-    public List<Character> getCharacters() {
-        return this.characters;
-    }
 
     @Override
-    public void setCharacters(List<Character> characters) {
-        this.characters = characters;
-    }
-
-    @Override
-    public Character[][] getMatrix() {
+    public Character[] getMatrix() {
         return this.matrix;
     }
 
     @Override
-    public void setMatrix(Character[][] matrix) {
+    public void setMatrix(Character[] matrix) {
         this.matrix = matrix;
     }
 

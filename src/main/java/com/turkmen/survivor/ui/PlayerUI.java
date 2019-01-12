@@ -1,14 +1,17 @@
 package com.turkmen.survivor.ui;
 
+import com.turkmen.survivor.api.model.Player;
+import com.turkmen.survivor.api.service.PlayerService;
 import com.turkmen.survivor.builder.GenericBuilder;
-import com.turkmen.survivor.entity.PlayerEntity;
 import com.turkmen.survivor.entitydto.PlayerDto;
-import com.turkmen.survivor.service.PlayerService;
 import com.turkmen.survivor.service.impl.PlayerServiceImpl;
 import com.turkmen.survivor.ui.mapper.PlayerMapper;
 import com.turkmen.survivor.util.Utils;
 
+import java.util.List;
+
 public class PlayerUI {
+
     private PlayerService playerService = GenericBuilder.of(PlayerServiceImpl::new)
             .build();
 
@@ -16,13 +19,19 @@ public class PlayerUI {
     /**
      * @param name
      * @return PlayerDto
-     * @TODO casting will be fixed structurelly
      */
-    public PlayerDto create(String name) {
-        PlayerEntity playerEntity = PlayerMapper.makePlayerEntity(GenericBuilder.of(PlayerDto::new)
+    public Player create(String name) {
+        PlayerDto dto = GenericBuilder.of(PlayerDto::new)
                 .with(PlayerDto::setName, name)
                 .with(PlayerDto::setId, Utils.generateRandomInt())
-                .build());
-        return PlayerMapper.makePlayerDto((PlayerEntity) playerService.create(playerEntity));
+                .build();
+        Player playerEntity = PlayerMapper.makePlayerEntity(dto);
+        playerService.create(playerEntity);
+        return dto;
+    }
+
+
+    public List<Player> getAllPlayers() {
+        return PlayerMapper.makePlayerDtoList(playerService.getAll());
     }
 }

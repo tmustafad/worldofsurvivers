@@ -1,14 +1,13 @@
-package com.turkmen.survivor.api;
+package com.turkmen.survivor.api.model;
 
 public interface Character {
     int getId();
+
     void setId(int id);
 
-    int getLocationx();
-    void setLocationx(int locationx);
+    int getLocation();
 
-    int getLocationy();
-    void setLocationy(int locationy);
+    void setLocation(int location);
 
     int getPlanetId();
 
@@ -26,8 +25,6 @@ public interface Character {
 
     void setAlive(boolean alive);
 
-
-    void defend();
 
     CharacterType getType();
 

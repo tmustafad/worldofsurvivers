@@ -1,4 +1,4 @@
-package com.turkmen.survivor.api;
+package com.turkmen.survivor.api.model;
 
 public interface Player {
 

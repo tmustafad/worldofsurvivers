@@ -37,6 +37,8 @@ public final class Utils {
 
     public static int generateRandomInt() {
         Random random = new Random();
-        return random.nextInt(Integer.valueOf(getPropertyValue("id.range.max").get()).intValue());
+        return random.nextInt(Integer.valueOf(getPropertyValue("world.id.range.max").get()).intValue());
     }
+
+
 }

@@ -1,7 +1,7 @@
 package com.turkmen.survivor.entity;
 
-import com.turkmen.survivor.api.Character;
-import com.turkmen.survivor.api.CharacterType;
+import com.turkmen.survivor.api.model.Character;
+import com.turkmen.survivor.api.model.CharacterType;
 
 public class CharacterEntity implements Character {
 
@@ -14,9 +14,11 @@ public class CharacterEntity implements Character {
     private boolean alive;
 
     private CharacterType type;
+
     private int planetId;
-    private int locationx;
-    private int locationy;
+
+    private int location;
+
 
     @Override
     public int getId() {
@@ -29,24 +31,15 @@ public class CharacterEntity implements Character {
     }
 
     @Override
-    public int getLocationx() {
-        return this.locationx;
+    public int getLocation() {
+        return this.location;
     }
 
     @Override
-    public void setLocationx(int locationx) {
-        this.locationx = locationx;
+    public void setLocation(int locationx) {
+        this.location = locationx;
     }
 
-    @Override
-    public int getLocationy() {
-        return this.locationy;
-    }
-
-    @Override
-    public void setLocationy(int locationy) {
-        this.locationy = locationy;
-    }
 
     @Override
     public int getPlanetId() {
@@ -82,11 +75,6 @@ public class CharacterEntity implements Character {
         this.alive = alive;
     }
 
-
-    @Override
-    public void defend() {
-
-    }
 
     public CharacterType getType() {
         return null;

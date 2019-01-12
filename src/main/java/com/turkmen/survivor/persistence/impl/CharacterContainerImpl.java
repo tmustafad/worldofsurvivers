@@ -1,14 +1,14 @@
 package com.turkmen.survivor.persistence.impl;
 
-import com.turkmen.survivor.api.Character;
-import com.turkmen.survivor.persistence.Container;
+import com.turkmen.survivor.api.model.Character;
+import com.turkmen.survivor.api.persistence.Container;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class CharacterContainerImpl implements Container<Character> {
 
-    private static CharacterContainerImpl characterContainerImpl = null;
+    private static CharacterContainerImpl characterContainerImpl;
     Map<Integer, Character> characters;
 
     {
@@ -19,9 +19,9 @@ public class CharacterContainerImpl implements Container<Character> {
         System.out.println("Character container initialized........");
     }
 
-    public static CharacterContainerImpl getcharacterContainerImpl() {
+    public static CharacterContainerImpl getInstance() {
         if (characterContainerImpl == null) {
-            return new CharacterContainerImpl();
+            characterContainerImpl=new CharacterContainerImpl();
         }
         return characterContainerImpl;
     }
@@ -34,5 +34,9 @@ public class CharacterContainerImpl implements Container<Character> {
     @Override
     public void add(Character character) {
         this.characters.put(character.getId(), character);
+    }
+
+    public Map<Integer, Character> getCharacters() {
+        return characters;
     }
 }

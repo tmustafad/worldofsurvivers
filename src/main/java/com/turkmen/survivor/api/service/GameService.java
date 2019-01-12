@@ -1,6 +1,6 @@
-package com.turkmen.survivor.service;
+package com.turkmen.survivor.api.service;
 
-import com.turkmen.survivor.api.Game;
+import com.turkmen.survivor.api.model.Game;
 
 public interface GameService extends Service<Game> {
 

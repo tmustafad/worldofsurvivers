@@ -1,13 +1,14 @@
 package com.turkmen.survivor.persistence.impl;
 
-import com.turkmen.survivor.api.Player;
-import com.turkmen.survivor.persistence.Container;
+import com.turkmen.survivor.api.model.Player;
+import com.turkmen.survivor.api.persistence.Container;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class PlayerContainerImpl implements Container<Player> {
-    private static PlayerContainerImpl playerContainerImpl = null;
+    private static PlayerContainerImpl playerContainerImpl;
+
 
     private Map<Integer, Player> players;
 
@@ -20,9 +21,9 @@ public class PlayerContainerImpl implements Container<Player> {
     }
 
 
-    public static PlayerContainerImpl getPlayerContainerImpl() {
+    public static PlayerContainerImpl getInstance() {
         if (playerContainerImpl == null) {
-            return new PlayerContainerImpl();
+            playerContainerImpl = new PlayerContainerImpl();
         }
         return playerContainerImpl;
     }
@@ -35,5 +36,9 @@ public class PlayerContainerImpl implements Container<Player> {
     @Override
     public void add(Player player) {
         players.put(player.getId(), player);
+    }
+
+    public Map<Integer, Player> getPlayers() {
+        return players;
     }
 }

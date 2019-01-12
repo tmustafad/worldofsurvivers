@@ -1,6 +1,6 @@
 package com.turkmen.survivor.entitydto;
 
-import com.turkmen.survivor.api.Player;
+import com.turkmen.survivor.api.model.Player;
 
 public class PlayerDto extends DefaultDto implements Player {
 

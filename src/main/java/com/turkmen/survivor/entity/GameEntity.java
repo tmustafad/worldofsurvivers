@@ -1,13 +1,15 @@
 package com.turkmen.survivor.entity;
 
-import com.turkmen.survivor.api.Character;
-import com.turkmen.survivor.api.*;
+import com.turkmen.survivor.api.model.Character;
+import com.turkmen.survivor.api.model.*;
 
 public class GameEntity implements Game {
 
     private Planet planet;
     private int id;
     private Player player;
+    private boolean active;
+    private String name;
 
     @Override
     public Player getPlayer() {
@@ -20,23 +22,18 @@ public class GameEntity implements Game {
     }
 
     @Override
-    public Character findAndAttack(CharacterType characterType) {
+    public Character find(CharacterType characterType) {
         return null;
     }
 
     @Override
-    public void start() {
-
+    public String getName() {
+        return name;
     }
 
     @Override
-    public Game resume() {
-    return this;
-    }
-
-    @Override
-    public void pause() {
-
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
@@ -57,5 +54,13 @@ public class GameEntity implements Game {
         this.id = id;
     }
 
+    @Override
+    public boolean isActive() {
+        return active;
+    }
 
+    @Override
+    public void setActive(boolean active) {
+        this.active = active;
+    }
 }

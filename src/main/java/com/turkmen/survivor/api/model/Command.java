@@ -1,4 +1,4 @@
-package com.turkmen.survivor.ui;
+package com.turkmen.survivor.api.model;
 
 public enum Command {
     REGISTER(1, "Register"),
