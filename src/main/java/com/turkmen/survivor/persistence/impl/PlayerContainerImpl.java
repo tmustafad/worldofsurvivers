@@ -42,6 +42,16 @@ public class PlayerContainerImpl implements Container<Player> {
         return players.put(player.getId(), player);
     }
 
+
+    @Override
+    public Player delete(Player player) {
+        if (this.players.containsKey(player.getId())) {
+            this.players.replace(player.getId(), players.get(player.getId()), null);
+            return this.players.get(player.getId());
+        }
+        return players.put(player.getId(), player);
+    }
+
     public Map<Integer, Player> getPlayers() {
         return players;
     }

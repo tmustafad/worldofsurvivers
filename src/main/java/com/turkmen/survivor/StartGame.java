@@ -51,6 +51,7 @@ public class StartGame {
                     }
                     else{
                         System.out.println("Your game may either be paused or win. You can resume the game or start over again ..");
+                        break;
                     }
 
 
@@ -58,7 +59,7 @@ public class StartGame {
                     if (game.getStatus().getCode() == GameStatus.ACTIVE.getCode()) {
                         System.out.print("Enter a location code : ");
                         searchLocation = sc.nextInt();
-                        character = setup.getPlanetUI().getPlanetByName("world").getMatrix()[searchLocation];
+                        character=setup.getCharacterUI().find("World",playerCharacter.getId(),searchLocation);
                         if (character != null) {
                             System.out.println("A character is found in given location, below are the details of it. You wanna attack or skip?");
                             System.out.println(gameState.showCharacterDetails(character));
@@ -82,8 +83,14 @@ public class StartGame {
                         Character attacker=setup.getCharacterUI().attack(playerCharacter, character.getId());
                         if(attacker.getHealth()<=0){
                             System.out.println("Attacked but unfortunately died. !");
+                            System.out.println(gameState.getGameState(game.getId()));
                             System.exit(3);
                         }
+                        else{
+                            setup.getCharacterUI().delete(character);
+                            System.out.println("You killed it.Your health is increased...");
+                        }
+
                     }
 
 
@@ -98,6 +105,9 @@ public class StartGame {
                         gameState.updateGameState(game);
                         System.out.println("Your game is saved. You can resume anytime by entering resume command.");
                     }
+                    else
+                        System.out.println("You can not save an inactive game! ");
+                    break;
 
                 case "resume":
                     if(game.getStatus().getCode() == GameStatus.PAUSED.getCode()){
@@ -106,6 +116,16 @@ public class StartGame {
                         gameState.updateGameState(game);
                         System.out.println("Your game resumed..You can now discover the planet and attack!");
                     }
+                    else
+                        System.out.println("You can onle resume a paused game! ");
+                    break;
+
+
+                case "status":
+                    if(game.getStatus().getCode() != GameStatus.LOST.getCode())
+                    System.out.println(gameState.getGameState(game.getId()));
+                    else
+                        System.out.println("You can not check a finished game status..");
                 default:
                     System.out.println("Invalid Command.! Please enter a valid command.");
             }

@@ -28,7 +28,7 @@ public class CharacterServiceImpl implements CharacterService {
     @Override
     public List<Character> getAll() throws ServiceException {
         return characterContainerImpl.getCharacters()
-                .values().stream().collect(Collectors.toList());
+                .values().stream().filter(f->f != null).collect(Collectors.toList());
     }
 
 
@@ -53,14 +53,18 @@ public class CharacterServiceImpl implements CharacterService {
     @Override
     public Character find(String planetName, int sourceId, int location) {
         Character source = Arrays.stream(planetContainerImpl.getPlanets().values().stream().filter(p -> p.getName().equalsIgnoreCase(planetName)).findFirst().get().getMatrix())
-                .filter(c -> c.getId() == sourceId).findFirst().get();
+                .filter(c -> c != null && c.getId() == sourceId).findFirst().get();
         Character character = planetContainerImpl.getPlanets().values().stream().filter(p -> p.getName().equalsIgnoreCase(planetName)).findFirst().get().getMatrix()[location];
 
-        gameEngine.withdrawSearchingCost(source);
+        source =gameEngine.withdrawSearchingCost(source);
         update(source);
+        if(character != null)
         update(character);
         return character != null ? character : null;
     }
 
-
+    @Override
+    public Character delete(Character character) throws ServiceException {
+        return characterContainerImpl.delete(character);
+    }
 }

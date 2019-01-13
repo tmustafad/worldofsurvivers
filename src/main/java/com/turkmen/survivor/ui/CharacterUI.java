@@ -42,7 +42,15 @@ public class CharacterUI {
     }
 
     public CharacterDto find(String planetName, int sourceId, int location) {
-        return CharacterMapper.makeCharacterDto(characterService.find(planetName, sourceId, location));
+        Character character=characterService.find(planetName, sourceId, location);
+        if(character!= null)
+        return CharacterMapper.makeCharacterDto(character);
+        else
+            return null;
+    }
+
+    public void delete(Character character){
+        characterService.delete(character);
     }
 
     public Character attack(Character attacker, int targetId) {

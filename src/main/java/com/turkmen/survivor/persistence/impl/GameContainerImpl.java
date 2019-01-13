@@ -32,11 +32,24 @@ public class GameContainerImpl implements Container<Game> {
         return this.games;
     }
 
+    @Override
+    public Game delete(Game game) {
+        if (this.games.containsKey(game.getId())) {
+            this.games.replace(game.getId(), games.get(game.getId()), null);
+            return this.games.get(game.getId());
+        }
+
+
+
+        return this.games.put(game.getId(), game);
+    }
+
     public Game add(Game game) {
         if (this.games.containsKey(game.getId())) {
             this.games.replace(game.getId(), games.get(game.getId()), game);
             return this.games.get(game.getId());
         }
+
 
 
         return this.games.put(game.getId(), game);

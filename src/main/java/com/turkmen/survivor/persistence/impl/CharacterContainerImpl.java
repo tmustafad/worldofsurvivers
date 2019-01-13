@@ -40,6 +40,15 @@ public class CharacterContainerImpl implements Container<Character> {
         return this.characters.put(character.getId(), character);
     }
 
+    @Override
+    public Character delete(Character character) {
+        if (this.characters.containsKey(character.getId())) {
+            this.characters.replace(character.getId(), characters.get(character.getId()), null);
+            return this.characters.get(character.getId());
+        }
+        return this.characters.put(character.getId(), character);
+    }
+
     public Map<Integer, Character> getCharacters() {
         return characters;
     }

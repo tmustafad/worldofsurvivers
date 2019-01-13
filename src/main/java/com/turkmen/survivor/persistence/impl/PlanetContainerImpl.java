@@ -42,6 +42,17 @@ public class PlanetContainerImpl implements Container<Planet> {
         return this.planets.put(planet.getId(), planet);
     }
 
+
+    @Override
+    public Planet delete(Planet planet) {
+        if (this.planets.containsKey(planet.getId())) {
+            this.planets.replace(planet.getId(), planets.get(planet.getId()), null);
+            return this.planets.get(planet.getId());
+        }
+
+        return this.planets.put(planet.getId(), planet);
+    }
+
     public Map<Integer, Planet> getPlanets() {
         return planets;
     }

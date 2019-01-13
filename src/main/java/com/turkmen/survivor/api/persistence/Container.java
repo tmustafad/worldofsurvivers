@@ -8,4 +8,6 @@ public interface Container<T> {
 
     T add(T t);
 
+    T delete(T t);
+
 }

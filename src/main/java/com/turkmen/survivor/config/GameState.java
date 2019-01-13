@@ -34,6 +34,8 @@ public class GameState {
         String numOfGhost = String.valueOf(characterUI.getAllCharacters().stream().filter(c -> c.getType().getName().equalsIgnoreCase(CharacterType.GHOST.getName())
                 && c.getHealth() > 0).count());
 
+        String totalNumOfCharacters=String.valueOf(characterUI.getAllCharacters().stream().filter(c -> c != null).count());
+
         StringJoiner sj = new StringJoiner("\n");
         Game game = gameUI.getAllGames().stream().filter(g -> g.getId() == id).findFirst().get();
         sj.add("*********************************************");
@@ -49,7 +51,8 @@ public class GameState {
         sj.add("Number of Cow : " + numOfCow);
         sj.add("Number of Chicken : " + numOfChicken);
         sj.add("Number of Alien : " + numOfAlien);
-        sj.add("Number of DGhost : " + numOfGhost);
+        sj.add("Number of Ghost : " + numOfGhost);
+        sj.add("Total Population : " + totalNumOfCharacters);
         sj.add("*********************************************");
         return sj;
     }
