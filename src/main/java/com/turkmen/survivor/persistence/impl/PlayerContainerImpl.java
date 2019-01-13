@@ -35,6 +35,10 @@ public class PlayerContainerImpl implements Container<Player> {
 
     @Override
     public Player add(Player player) {
+        if (this.players.containsKey(player.getId())) {
+            this.players.replace(player.getId(), players.get(player.getId()), player);
+            return this.players.get(player.getId());
+        }
         return players.put(player.getId(), player);
     }
 

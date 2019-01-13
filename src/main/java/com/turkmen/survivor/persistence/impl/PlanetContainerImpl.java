@@ -1,7 +1,6 @@
 package com.turkmen.survivor.persistence.impl;
 
 import com.turkmen.survivor.api.model.Planet;
-import com.turkmen.survivor.api.model.Player;
 import com.turkmen.survivor.api.persistence.Container;
 
 import java.util.HashMap;
@@ -35,7 +34,12 @@ public class PlanetContainerImpl implements Container<Planet> {
 
     @Override
     public Planet add(Planet planet) {
-      return  this.planets.put(planet.getId(), planet);
+        if (this.planets.containsKey(planet.getId())) {
+            this.planets.replace(planet.getId(), planets.get(planet.getId()), planet);
+            return this.planets.get(planet.getId());
+        }
+
+        return this.planets.put(planet.getId(), planet);
     }
 
     public Map<Integer, Planet> getPlanets() {

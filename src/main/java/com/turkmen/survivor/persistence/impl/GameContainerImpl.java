@@ -33,7 +33,13 @@ public class GameContainerImpl implements Container<Game> {
     }
 
     public Game add(Game game) {
-        return this.games.put(game.getId(),game);
+        if (this.games.containsKey(game.getId())) {
+            this.games.replace(game.getId(), games.get(game.getId()), game);
+            return this.games.get(game.getId());
+        }
+
+
+        return this.games.put(game.getId(), game);
     }
 
 

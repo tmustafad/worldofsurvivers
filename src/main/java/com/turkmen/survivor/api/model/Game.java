@@ -2,6 +2,10 @@ package com.turkmen.survivor.api.model;
 
 public interface Game {
 
+
+    GameStatus getStatus();
+    void setStatus(GameStatus gameStatus);
+
     String getName();
     void setName(String name);
 

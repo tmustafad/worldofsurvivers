@@ -9,6 +9,18 @@ public class GameDto extends DefaultDto implements Game {
     private int id;
     private Player player;
     private boolean active;
+    private GameStatus gameStatus;
+
+
+    @Override
+    public GameStatus getStatus() {
+        return this.gameStatus;
+    }
+
+    @Override
+    public void setStatus(GameStatus gameStatus) {
+    this.gameStatus=gameStatus;
+    }
 
     @Override
     public Character find(CharacterType characterType) {

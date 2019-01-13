@@ -37,6 +37,6 @@ public class PlanetDto extends DefaultDto implements Planet {
 
     @Override
     public Character[] getMatrix() {
-        return new Character[0];
+        return this.matrix;
     }
 }

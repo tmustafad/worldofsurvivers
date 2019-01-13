@@ -16,7 +16,7 @@ public class PlanetUI {
     PlanetService planetService = GenericBuilder.of(PlanetServiceImpl::new).build();
 
 
-    public Planet create(String name) {
+    public PlanetDto create(String name) {
         PlanetDto dto = GenericBuilder.of(PlanetDto::new)
                 .with(PlanetDto::setName, name)
                 .with(PlanetDto::setId, Utils.generateRandomInt())
@@ -26,15 +26,16 @@ public class PlanetUI {
         return dto;
     }
 
-    public Planet update(Planet planet){
-        return planetService.update(planet);
+
+    public PlanetDto update(Planet planet) {
+        return PlanetMapper.makePlanetDto(planetService.update(PlanetMapper.makePlanetEntity(planet)));
     }
 
     public List<Planet> getAllPlanets() {
         return PlanetMapper.makePlanetDtoList(planetService.getAll());
     }
 
-    public Planet getPlanetByName(String name) {
-        return planetService.get(name);
+    public PlanetDto getPlanetByName(String name) {
+        return PlanetMapper.makePlanetDto(planetService.get(name));
     }
 }

@@ -11,21 +11,23 @@ import java.util.stream.Collectors;
 public class PlanetMapper {
 
 
-    public static Planet makePlanetEntity(PlanetDto planetDto) {
-        return GenericBuilder.of(PlanetEntity::new)
+    public static PlanetEntity makePlanetEntity(Planet planetDto) {
+        PlanetEntity p= GenericBuilder.of(PlanetEntity::new)
                 .with(PlanetEntity::setId, planetDto.getId())
                 .with(PlanetEntity::setName, planetDto.getName())
                 .with(PlanetEntity::setMatrix, planetDto.getMatrix())
                 .build();
+        return p;
     }
 
 
-    public static Planet makePlanetDto(PlanetEntity planetEntity) {
-        return GenericBuilder.of(PlanetDto::new)
+    public static PlanetDto makePlanetDto(Planet planetEntity) {
+        PlanetDto p= GenericBuilder.of(PlanetDto::new)
                 .with(PlanetDto::setId, planetEntity.getId())
                 .with(PlanetDto::setName, planetEntity.getName())
                 .with(PlanetDto::setMatrix, planetEntity.getMatrix())
                 .build();
+        return p;
     }
 
 

@@ -1,29 +1,116 @@
 package com.turkmen.survivor;
 
+import com.turkmen.survivor.api.model.Character;
+import com.turkmen.survivor.api.model.CharacterType;
 import com.turkmen.survivor.api.model.Game;
+import com.turkmen.survivor.api.model.GameStatus;
 import com.turkmen.survivor.builder.GenericBuilder;
 import com.turkmen.survivor.config.GameState;
 import com.turkmen.survivor.config.Setup;
-import com.turkmen.survivor.persistence.impl.PlayerContainerImpl;
-import com.turkmen.survivor.ui.PlayerUI;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class StartGame {
-
-
+    static Setup setup = GenericBuilder.of(Setup::new).build();
+    static GameState gameState = GenericBuilder.of(GameState::new).build();
     public static void main(String[] args) {
 
-        String command;
         Scanner sc = new Scanner(System.in);
-        Setup setup =GenericBuilder.of(Setup::new).build();
-        GameState gameState=GenericBuilder.of(GameState::new).build();
+        String command;
+        String playerName;
+        int searchLocation;
+        System.out.println(gameState.welcomeMessage());
+        playerName = sc.next();
 
+        Game game = setup.createGame(playerName);
+        System.out.println("Hello " + playerName+" Please enter a valid command to start the game.....");
+
+        Character playerCharacter = null;
+        boolean invalidCommand = false;
+        Character character = null;
         while (true) {
-            System.out.println("****** WELCOME TO THE WORLD OF SURVIVERS ******");
-            System.out.println("AS A HUMAN,ARE YOU STRONG ENOUGH TO SURVIVE IN A WORLD OF MONSTERS?");
-            Game game=setup.createGame("turkmen");
-            System.out.println(gameState.getGameState(game.getId()).toString());
+            System.out.println("Please enter a valid command !");
+            command = sc.next();
+
+            switch (command) {
+                case "start":
+                    if(game.getStatus().getCode() == GameStatus.LOST.getCode()){
+                        System.out.println("You already lost the game ...Try Again ");
+                        System.exit(3);
+                    }
+                    else if(game.getStatus().getCode() == GameStatus.NEW.getCode()){
+                        game.setActive(Boolean.TRUE);
+                        game.setStatus(GameStatus.ACTIVE);
+                        playerCharacter = Arrays.stream(game.getPlanet().getMatrix())
+                                .filter(c -> c != null && c.getType().getName().equalsIgnoreCase(CharacterType.HUMAN.getName())).findAny().get();
+                        gameState.updateGameState(game);
+                        System.out.println(gameState.getGameState(game.getId()));
+                        System.out.println("Search the planet for hunting? Find food to get power !");
+                        break;
+                    }
+                    else{
+                        System.out.println("Your game may either be paused or win. You can resume the game or start over again ..");
+                    }
+
+
+                case "find":
+                    if (game.getStatus().getCode() == GameStatus.ACTIVE.getCode()) {
+                        System.out.print("Enter a location code : ");
+                        searchLocation = sc.nextInt();
+                        character = setup.getPlanetUI().getPlanetByName("world").getMatrix()[searchLocation];
+                        if (character != null) {
+                            System.out.println("A character is found in given location, below are the details of it. You wanna attack or skip?");
+                            System.out.println(gameState.showCharacterDetails(character));
+                        }
+                        else{
+                            System.out.println("There is no food in this location,try different areas of the planet!");
+                        }
+
+                    }
+                    else{
+                        System.out.println("The game is not in active state, you can start new game or resume an ongoing game !!!");
+                    }
+
+                    break;
+                case "attack":
+                    if (game.getStatus().getCode() == GameStatus.ACTIVE.getCode()) {
+                        if (character == null) {
+                            System.out.println("Invalid Command,Please first find a character to attack...!");
+                            break;
+                        }
+                        Character attacker=setup.getCharacterUI().attack(playerCharacter, character.getId());
+                        if(attacker.getHealth()<=0){
+                            System.out.println("Attacked but unfortunately died. !");
+                            System.exit(3);
+                        }
+                    }
+
+
+                    System.out.println(gameState.getGameState(game.getId()));
+                    break;
+
+
+                case "save":
+                    if(game.getStatus().getCode()== GameStatus.ACTIVE.getCode()){
+                        game.setActive(Boolean.FALSE);
+                        game.setStatus(GameStatus.PAUSED);
+                        gameState.updateGameState(game);
+                        System.out.println("Your game is saved. You can resume anytime by entering resume command.");
+                    }
+
+                case "resume":
+                    if(game.getStatus().getCode() == GameStatus.PAUSED.getCode()){
+                        game.setActive(Boolean.TRUE);
+                        game.setStatus(GameStatus.ACTIVE);
+                        gameState.updateGameState(game);
+                        System.out.println("Your game resumed..You can now discover the planet and attack!");
+                    }
+                default:
+                    System.out.println("Invalid Command.! Please enter a valid command.");
+            }
+
+
         }
 
     }

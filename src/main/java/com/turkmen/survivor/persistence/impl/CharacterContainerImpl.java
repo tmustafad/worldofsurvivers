@@ -21,7 +21,7 @@ public class CharacterContainerImpl implements Container<Character> {
 
     public static CharacterContainerImpl getInstance() {
         if (characterContainerImpl == null) {
-            characterContainerImpl=new CharacterContainerImpl();
+            characterContainerImpl = new CharacterContainerImpl();
         }
         return characterContainerImpl;
     }
@@ -33,10 +33,16 @@ public class CharacterContainerImpl implements Container<Character> {
 
     @Override
     public Character add(Character character) {
+        if (this.characters.containsKey(character.getId())) {
+            this.characters.replace(character.getId(), characters.get(character.getId()), character);
+            return this.characters.get(character.getId());
+        }
         return this.characters.put(character.getId(), character);
     }
 
     public Map<Integer, Character> getCharacters() {
         return characters;
     }
+
+
 }

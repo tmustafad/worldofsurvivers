@@ -17,7 +17,7 @@ public class CharacterUI {
             .build();
 
 
-    public Character create(String name, int health, boolean alive, CharacterType type, int planetId, int location) {
+    public CharacterDto create(String name, int health, boolean alive, CharacterType type, int planetId, int location) {
 
         CharacterDto dto = GenericBuilder.of(CharacterDto::new)
                 .with(CharacterDto::setId, Utils.generateRandomInt())
@@ -33,11 +33,22 @@ public class CharacterUI {
 
     }
 
-    public Character update(Character character){
-        return characterService.update(character);
+    public CharacterDto update(Character character) {
+        return CharacterMapper.makeCharacterDto(characterService.update(character));
     }
 
     public List<Character> getAllCharacters() {
         return CharacterMapper.makeCharacterDtoList(characterService.getAll());
     }
+
+    public CharacterDto find(String planetName, int sourceId, int location) {
+        return CharacterMapper.makeCharacterDto(characterService.find(planetName, sourceId, location));
+    }
+
+    public Character attack(Character attacker, int targetId) {
+        characterService.attack(attacker, targetId);
+        return attacker;
+    }
+
+
 }

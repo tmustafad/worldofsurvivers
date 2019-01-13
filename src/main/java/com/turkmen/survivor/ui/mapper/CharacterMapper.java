@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 public class CharacterMapper {
 
 
-    public static Character makeCharacterEntity(CharacterDto characterDto) {
+    public static CharacterEntity makeCharacterEntity(CharacterDto characterDto) {
         return GenericBuilder.of(CharacterEntity::new)
                 .with(CharacterEntity::setId, characterDto.getId())
                 .with(CharacterEntity::setLocation, characterDto.getLocation())
@@ -24,7 +24,7 @@ public class CharacterMapper {
     }
 
 
-    public static Character makeCharacterDto(CharacterEntity characterEntity) {
+    public static CharacterDto makeCharacterDto(Character characterEntity) {
         return GenericBuilder.of(CharacterDto::new)
                 .with(CharacterDto::setId, characterEntity.getId())
                 .with(CharacterDto::setLocation, characterEntity.getLocation())

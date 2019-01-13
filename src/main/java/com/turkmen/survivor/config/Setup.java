@@ -1,8 +1,10 @@
 package com.turkmen.survivor.config;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import com.turkmen.survivor.api.model.Character;
 import com.turkmen.survivor.api.model.*;
 import com.turkmen.survivor.builder.GenericBuilder;
+import com.turkmen.survivor.persistence.impl.CharacterContainerImpl;
 import com.turkmen.survivor.ui.CharacterUI;
 import com.turkmen.survivor.ui.GameUI;
 import com.turkmen.survivor.ui.PlanetUI;
@@ -47,46 +49,47 @@ public class Setup {
     }
 
     private Planet createPlanet() {
-        planetUI.create(planetName);
-        return createPlanetMatrix();
+        Planet planet=planetUI.create(planetName);
+        return createPlanetMatrix(planet);
     }
 
-    private Planet createPlanetMatrix() {
+    private Planet createPlanetMatrix(Planet planet) {
         Character[] matrix = new Character[matrixSize];
 
         IntStream.range(1, dinosaurCount + 1).forEach(i -> matrix[i] = characterUI.create(CharacterType.DINOSAUR.getName(),
-                CharacterType.DINOSAUR.getInitialHealth(), Boolean.TRUE, CharacterType.DINOSAUR, planetUI.getPlanetByName(planetName).getId(), i));
+                CharacterType.DINOSAUR.getInitialHealth(), Boolean.TRUE, CharacterType.DINOSAUR, planet.getId(), i));
 
 
         IntStream.range(dinosaurCount + 1, dinosaurCount + sheepCount + 2).forEach(i -> matrix[i] = characterUI.create(CharacterType.SHEEP.getName(),
-                CharacterType.SHEEP.getInitialHealth(), Boolean.TRUE, CharacterType.SHEEP, planetUI.getPlanetByName(planetName).getId(), i));
+                CharacterType.SHEEP.getInitialHealth(), Boolean.TRUE, CharacterType.SHEEP, planet.getId(), i));
 
 
         IntStream.range(dinosaurCount + sheepCount + 2, dinosaurCount + sheepCount + cowCount + 2).forEach(i -> matrix[i] = characterUI.create(CharacterType.COW.getName(),
-                CharacterType.COW.getInitialHealth(), Boolean.TRUE, CharacterType.COW, planetUI.getPlanetByName(planetName).getId(), i));
+                CharacterType.COW.getInitialHealth(), Boolean.TRUE, CharacterType.COW, planet.getId(), i));
 
 
         IntStream.range(dinosaurCount + sheepCount + cowCount + 2, dinosaurCount + sheepCount + cowCount + chickenCount + 2).forEach(i -> matrix[i] = characterUI.create(CharacterType.CHICKEN.getName(),
-                CharacterType.CHICKEN.getInitialHealth(), Boolean.TRUE, CharacterType.CHICKEN, planetUI.getPlanetByName(planetName).getId(), i));
+                CharacterType.CHICKEN.getInitialHealth(), Boolean.TRUE, CharacterType.CHICKEN, planet.getId(), i));
 
 
         IntStream.range(dinosaurCount + sheepCount + cowCount + chickenCount + 2, dinosaurCount + sheepCount + cowCount + chickenCount + alienCount + 2).forEach(i -> matrix[i] = characterUI.create(CharacterType.ALIEN.getName(),
-                CharacterType.ALIEN.getInitialHealth(), Boolean.TRUE, CharacterType.ALIEN, planetUI.getPlanetByName(planetName).getId(), i));
+                CharacterType.ALIEN.getInitialHealth(), Boolean.TRUE, CharacterType.ALIEN,planet.getId(), i));
 
 
         IntStream.range(dinosaurCount + sheepCount + cowCount + chickenCount + alienCount + 2, dinosaurCount + sheepCount + cowCount + chickenCount + alienCount + ghostCount + 2).forEach(i -> matrix[i] = characterUI.create(CharacterType.GHOST.getName(),
-                CharacterType.GHOST.getInitialHealth(), Boolean.TRUE, CharacterType.GHOST, planetUI.getPlanetByName(planetName).getId(), i));
+                CharacterType.GHOST.getInitialHealth(), Boolean.TRUE, CharacterType.GHOST, planet.getId(), i));
 
 
         Character human = characterUI.create(CharacterType.HUMAN.getName(),
-                CharacterType.HUMAN.getInitialHealth(), Boolean.TRUE, CharacterType.HUMAN, planetUI.getPlanetByName(planetName).getId(), 0);
+                CharacterType.HUMAN.getInitialHealth(), Boolean.TRUE, CharacterType.HUMAN, planet.getId(), 0);
         matrix[0] = human;
         Collections.shuffle(Arrays.asList(matrix));
         IntStream.range(0, matrixSize).filter(e -> matrix[e] != null).forEach(i -> matrix[i].setLocation(i));
         IntStream.range(0, matrixSize).filter(f -> matrix[f] != null).forEach(j -> characterUI.update(matrix[j]));
-        planetUI.getPlanetByName(planetName).setMatrix(matrix);
-        List<Character> characters = characterUI.getAllCharacters();
-        return planetUI.update(planetUI.getPlanetByName(planetName));
+
+        planet.setMatrix(matrix);
+
+        return planetUI.update(planet);
     }
 
     private Player createPlayer(String name) {
@@ -97,11 +100,28 @@ public class Setup {
 
     public Game createGame(String playerName) {
         Game game = gameUI.create();
-        game.setPlanet(this.createPlanet());
+        Planet planet=this.createPlanet();
+        game.setPlanet(planet);
         game.setPlayer(createPlayer(playerName));
+        game.setStatus(GameStatus.NEW);
+        game.setActive(Boolean.FALSE);
         gameUI.update(game);
         return game;
     }
 
+    public PlanetUI getPlanetUI() {
+        return planetUI;
+    }
 
+    public CharacterUI getCharacterUI() {
+        return characterUI;
+    }
+
+    public GameUI getGameUI() {
+        return gameUI;
+    }
+
+    public PlayerUI getPlayerUI() {
+        return playerUI;
+    }
 }

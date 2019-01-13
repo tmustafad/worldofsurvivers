@@ -10,6 +10,17 @@ public class GameEntity implements Game {
     private Player player;
     private boolean active;
     private String name;
+    private GameStatus gameStatus;
+
+    @Override
+    public GameStatus getStatus() {
+        return this.gameStatus;
+    }
+
+    @Override
+    public void setStatus(GameStatus gameStatus) {
+    this.gameStatus=gameStatus;
+    }
 
     @Override
     public Player getPlayer() {
