@@ -8,6 +8,17 @@ import com.turkmen.survivor.api.service.PlayerService;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * <h1>The service impl of Player </h1>
+ *
+ *
+ * @see  @{@link PlayerService}
+ * @author  Turkmen
+ * @version 1.0
+ * @since   2019-01-14
+ *
+ *
+ */
 public class PlayerServiceImpl implements PlayerService {
     PlayerContainerImpl playerContainerImpl = PlayerContainerImpl.getInstance();
 

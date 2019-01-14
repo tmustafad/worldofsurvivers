@@ -1,5 +1,20 @@
 package com.turkmen.survivor.api.exception;
 
+
+
+/**
+ * <h1>The Error Class of the whole application</h1>
+ *
+ *
+ *
+ *
+ * @author  Turkmen
+ * @see ServiceException
+ * @version 1.0
+ * @since   2019-01-14
+ *
+ *
+ */
 public class MainError {
 
     protected int code;

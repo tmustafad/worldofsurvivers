@@ -2,6 +2,17 @@ package com.turkmen.survivor.entitydto;
 
 import com.turkmen.survivor.api.model.Player;
 
+
+
+/**
+ * <h1>The DTO is the transfer object between service-db layer and ui layer. {@link com.turkmen.survivor.ui.PlanetUI} </h1>
+ *
+ * @author  Turkmen
+ * @version 1.0
+ * @since   2019-01-14
+ *
+ *
+ */
 public class PlayerDto extends DefaultDto implements Player {
 
     private int id;

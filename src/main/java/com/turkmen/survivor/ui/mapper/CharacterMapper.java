@@ -8,6 +8,18 @@ import com.turkmen.survivor.entitydto.CharacterDto;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
+/**
+ * <h1> The Character mapper between Entity and DTOs</h1>
+ *
+ *
+ * @see  @{@link com.turkmen.survivor.ui.CharacterUI}
+ * @author  Turkmen
+ * @version 1.0
+ * @since   2019-01-14
+ *
+ *
+ */
 public class CharacterMapper {
 
 

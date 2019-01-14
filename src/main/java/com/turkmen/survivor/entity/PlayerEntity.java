@@ -1,7 +1,15 @@
 package com.turkmen.survivor.entity;
 
 import com.turkmen.survivor.api.model.Player;
-
+/**
+ * <h1>The entity which is being kept by @{@link com.turkmen.survivor.persistence.impl.PlayerContainerImpl}</h1>
+ *
+ * @author  Turkmen
+ * @version 1.0
+ * @since   2019-01-14
+ *
+ *
+ */
 public class PlayerEntity implements Player {
 
     private int id;

@@ -5,6 +5,16 @@ import com.turkmen.survivor.api.model.Planet;
 
 import java.util.List;
 
+
+/**
+ * <h1>The entity which is being kept by @{@link com.turkmen.survivor.persistence.impl.PlanetContainerImpl}</h1>
+ *
+ * @author  Turkmen
+ * @version 1.0
+ * @since   2019-01-14
+ *
+ *
+ */
 public class PlanetEntity implements Planet {
 
     private int id;

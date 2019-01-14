@@ -10,7 +10,17 @@ import java.util.stream.Collectors;
 
 public class PlanetMapper {
 
-
+    /**
+     * <h1> The Planet mapper between Entity and DTOs</h1>
+     *
+     *
+     * @see  @{@link com.turkmen.survivor.ui.PlanetUI}
+     * @author  Turkmen
+     * @version 1.0
+     * @since   2019-01-14
+     *
+     *
+     */
     public static PlanetEntity makePlanetEntity(Planet planetDto) {
         PlanetEntity p= GenericBuilder.of(PlanetEntity::new)
                 .with(PlanetEntity::setId, planetDto.getId())

@@ -11,6 +11,16 @@ import com.turkmen.survivor.config.Setup;
 import java.util.Arrays;
 import java.util.Scanner;
 
+/**
+ * <h1> The main class for the application. The main method is here </h1>
+ *
+ *
+ * @author  Turkmen
+ * @version 1.0
+ * @since   2019-01-14
+ *
+ *
+ */
 public class StartGame {
     static Setup setup = GenericBuilder.of(Setup::new).build();
     static GameState gameState = GenericBuilder.of(GameState::new).build();

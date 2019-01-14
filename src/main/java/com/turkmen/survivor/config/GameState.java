@@ -9,11 +9,29 @@ import com.turkmen.survivor.ui.GameUI;
 
 import java.util.StringJoiner;
 
+
+/**
+ * <h1>The place where the game state checks are managed. Two endpoints are injected here @{@link GameUI} @{@link CharacterUI}</h1>
+ *
+ * @TODO    This class will be divided into parts according to the clean code principles.Due to lack of time this bad style code is written. I am aware of this.
+ * @author  Turkmen
+ * @version 1.0
+ * @since   2019-01-14
+ *
+ *
+ */
 public class GameState {
 
     GameUI gameUI = GenericBuilder.of(GameUI::new).build();
     CharacterUI characterUI = GenericBuilder.of(CharacterUI::new).build();
 
+
+
+    /**
+     *After every move ,this method is called and the state of the current game is shown to player.
+     *
+     * @param id The id of the game for getting the relevant game from @{@link com.turkmen.survivor.persistence.impl.GameContainerImpl}
+     */
     public StringJoiner getGameState(int id) {
         String health = String.valueOf(characterUI.getAllCharacters().stream().filter(c -> c.getType().getName().equalsIgnoreCase(CharacterType.HUMAN.getName())).findFirst().get().getHealth());
         String location = String.valueOf(characterUI.getAllCharacters().stream().filter(c -> c.getType().getName().equalsIgnoreCase(CharacterType.HUMAN.getName())).findFirst().get().getLocation());
@@ -57,6 +75,11 @@ public class GameState {
         return sj;
     }
 
+    /**
+     *The method is used for showing character details.
+     *
+     * @param character
+     */
     public StringJoiner showCharacterDetails(Character character) {
         StringJoiner sj = new StringJoiner("\n");
         sj.add("Type : " + character.getType().getName());

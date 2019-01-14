@@ -1,5 +1,17 @@
 package com.turkmen.survivor.api.model;
 
+
+/**
+ * <h1>The scope and behaviour of the game is defined by this interface.</h1>
+ *
+ * @author  Turkmen
+ * @see com.turkmen.survivor.entity.GameEntity
+ * @see com.turkmen.survivor.entitydto.GameDto
+ * @version 1.0
+ * @since   2019-01-14
+ *
+ *
+ */
 public interface Game {
 
 

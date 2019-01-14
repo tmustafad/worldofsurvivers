@@ -6,6 +6,17 @@ import java.util.Optional;
 import java.util.Properties;
 import java.util.Random;
 
+
+/**
+ * <h1> The Util class for reading game properties from @worldofsurvivers.properties and for generating random numbers for entity unique ids.</h1>
+ *
+ *
+ * @author  Turkmen
+ * @version 1.0
+ * @since   2019-01-14
+ *
+ *
+ */
 public final class Utils {
 
     private Utils() {

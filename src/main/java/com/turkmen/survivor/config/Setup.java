@@ -1,10 +1,8 @@
 package com.turkmen.survivor.config;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import com.turkmen.survivor.api.model.Character;
 import com.turkmen.survivor.api.model.*;
 import com.turkmen.survivor.builder.GenericBuilder;
-import com.turkmen.survivor.persistence.impl.CharacterContainerImpl;
 import com.turkmen.survivor.ui.CharacterUI;
 import com.turkmen.survivor.ui.GameUI;
 import com.turkmen.survivor.ui.PlanetUI;
@@ -13,9 +11,18 @@ import com.turkmen.survivor.util.Utils;
 
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
 import java.util.stream.IntStream;
 
+
+/**
+ * <h1>All initial creations and setups for the game to be started are managed here</h1>
+ *
+ * @author  Turkmen
+ * @version 1.0
+ * @since   2019-01-14
+ *
+ *
+ */
 public class Setup {
 
     int matrixSize;
@@ -53,6 +60,10 @@ public class Setup {
         return createPlanetMatrix(planet);
     }
 
+    /**
+     *Constructs the one dimensional array for all characters and put it into the planet
+     * @param planet
+     */
     private Planet createPlanetMatrix(Planet planet) {
         Character[] matrix = new Character[matrixSize];
 

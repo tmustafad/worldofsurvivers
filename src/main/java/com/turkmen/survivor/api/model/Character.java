@@ -1,5 +1,20 @@
 package com.turkmen.survivor.api.model;
 
+
+/**
+ * <h1>The Interface which is being implemented by all character Entity and DTOs in the game.</h1>
+ *The behaviours of the characters are strictly defined here
+ *
+ *
+ *
+ * @author  Turkmen
+ * @see com.turkmen.survivor.entity.CharacterEntity
+ * @see com.turkmen.survivor.entitydto.CharacterDto
+ * @version 1.0
+ * @since   2019-01-14
+ *
+ *
+ */
 public interface Character {
     int getId();
 

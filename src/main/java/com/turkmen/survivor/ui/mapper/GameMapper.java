@@ -8,6 +8,17 @@ import com.turkmen.survivor.entitydto.GameDto;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * <h1> The Game mapper between Entity and DTOs</h1>
+ *
+ *
+ * @see  @{@link com.turkmen.survivor.ui.GameUI}
+ * @author  Turkmen
+ * @version 1.0
+ * @since   2019-01-14
+ *
+ *
+ */
 public class GameMapper {
 
     public static GameEntity makeGameEntity(Game gameDto) {

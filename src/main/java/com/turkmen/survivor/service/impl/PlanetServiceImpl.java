@@ -1,16 +1,28 @@
 package com.turkmen.survivor.service.impl;
 
 import com.turkmen.survivor.api.exception.ServiceException;
-import com.turkmen.survivor.api.model.Character;
 import com.turkmen.survivor.api.model.Planet;
 import com.turkmen.survivor.api.service.PlanetService;
 import com.turkmen.survivor.persistence.impl.CharacterContainerImpl;
 import com.turkmen.survivor.persistence.impl.PlanetContainerImpl;
-import com.turkmen.survivor.ui.mapper.PlanetMapper;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+
+
+
+/**
+ * <h1>The service impl of Planet </h1>
+ *
+ *
+ * @see  @{@link PlanetService}
+ * @author  Turkmen
+ * @version 1.0
+ * @since   2019-01-14
+ *
+ *
+ */
+
 
 public class PlanetServiceImpl implements PlanetService {
     PlanetContainerImpl planetContainerImpl = PlanetContainerImpl.getInstance();

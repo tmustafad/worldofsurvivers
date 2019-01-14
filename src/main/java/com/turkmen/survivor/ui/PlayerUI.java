@@ -9,7 +9,16 @@ import com.turkmen.survivor.ui.mapper.PlayerMapper;
 import com.turkmen.survivor.util.Utils;
 
 import java.util.List;
-
+/**
+ * <h1> The Player User Interaction class,a simulation of a controller. All manipulations are handled via service layer.</h1>
+ *
+ *
+ * @author  Turkmen
+ * @version 1.0
+ * @since   2019-01-14
+ *
+ *
+ */
 public class PlayerUI {
 
     private PlayerService playerService = GenericBuilder.of(PlayerServiceImpl::new)

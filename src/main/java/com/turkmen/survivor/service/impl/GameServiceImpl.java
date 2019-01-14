@@ -8,6 +8,18 @@ import com.turkmen.survivor.persistence.impl.GameContainerImpl;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
+/**
+ * <h1>The service impl of a Game </h1>
+ *
+ *
+ * @see  @{@link GameService}
+ * @author  Turkmen
+ * @version 1.0
+ * @since   2019-01-14
+ *
+ *
+ */
 public class GameServiceImpl implements GameService {
 
     GameContainerImpl gameContainer = GameContainerImpl.getInstance();

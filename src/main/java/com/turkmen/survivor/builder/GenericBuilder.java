@@ -6,6 +6,21 @@ import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
+/**
+ * <h1>The generic builder class for creating any type of object.This class is used throught the project</h1>
+ *
+ * Especially used for DTO to Entity conversion
+ *
+ * @author  Turkmen
+ * @see com.turkmen.survivor.service.impl.CharacterServiceImpl
+ * @see com.turkmen.survivor.service.impl.GameServiceImpl
+ * @see com.turkmen.survivor.service.impl.PlayerServiceImpl
+ * @see com.turkmen.survivor.service.impl.PlanetServiceImpl
+ * @version 1.0
+ * @since   2019-01-14
+ *
+ *
+ */
 public class GenericBuilder<T> {
 
     private final Supplier<T> instantiator;
