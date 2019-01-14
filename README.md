@@ -4,12 +4,12 @@ A command line based RPG game coded with pure java.
 
 ### Installing
 Download the project ,after you  run maven install command ,a jar is generated .
-The game command are detailed in the instructions section
+The game commands are detailed in the instructions section
 
 
 
 #  moneytransfergateway-Instructions
-when you run the jar , a welcome message will apper and demanding a name from you. This name is the name of the player . Below is an example welcome message.And following commands 
+when you run the jar , a welcome message will appear and it will  demand a name from you. This name is the name of the player . Below is an example welcome message.And following commands 
 ```
 Planet Container initialized.........
 Character container initialized........
